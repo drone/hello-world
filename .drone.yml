@@ -1,7 +1,16 @@
 kind: pipeline
 name: greeting
 
+platform:
+  os: linux
+  arch: arm
+
 steps:
+- name: uname
+  image: alpine
+  commands:
+  - uname -a
+
 - name: en
   image: alpine
   commands:
@@ -19,4 +28,3 @@ steps:
   commands:
   - echo bonjour
   - echo monde
-
