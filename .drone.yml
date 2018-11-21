@@ -1,22 +1,10 @@
 kind: pipeline
-name: greeting
+name: default
 
 steps:
-- name: en
-  image: alpine
-  commands:
-  - echo hello
-  - echo world
-
-- name: es
-  image: alpine
-  commands:
-  - echo hola
-  - echo mundo
-
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
-
+- name: docker
+  image: plugins/docker
+  settings:
+    repo: hello-world
+    tags: latest
+    dry_run: true
