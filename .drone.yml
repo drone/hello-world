@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: docker
+- name: build
   image: plugins/docker
   settings:
     repo: hello-world
