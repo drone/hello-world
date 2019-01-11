@@ -1,3 +1,4 @@
+---
 kind: pipeline
 name: greeting
 
@@ -20,3 +21,8 @@ steps:
   - echo bonjour
   - echo monde
 
+---
+kind: signature
+hmac: afe85aa7640943bd407f56ad29670c3b62b84d79be5ab4d1e4e2ceee291024c7
+
+...
