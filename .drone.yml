@@ -2,6 +2,12 @@ kind: pipeline
 name: greeting
 
 steps:
+- name: mysql
+  image: mysql:5
+  detach: true
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: true
+
 - name: en
   image: alpine
   commands:
