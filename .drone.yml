@@ -1,21 +1,11 @@
 kind: pipeline
-name: greeting
+name: default
 
 steps:
-- name: en
-  image: alpine
-  commands:
-  - echo hello
-  - echo world
+- name: build
+  image: plugins/docker
+  settings:
+    repo: hello-world-${DRONE_COMMIT_SHA:6}
+    tags: latest
+    dry_run: true
 
-- name: es
-  image: alpine
-  commands:
-  - echo hola
-  - echo mundo
-
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
