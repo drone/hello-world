@@ -11,6 +11,17 @@ steps:
 
 ---
 kind: pipeline
+name: saludo
+
+steps:
+- name: es
+  image: alpine:3.8
+  commands:
+  - echo hola
+  - echo mundo
+
+---
+kind: pipeline
 name: salutation
 
 steps:
@@ -28,4 +39,4 @@ trigger:
 
 depends_on:
 - greeting
-
+- saludo
