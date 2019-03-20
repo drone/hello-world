@@ -3,19 +3,29 @@ name: greeting
 
 steps:
 - name: en
-  image: alpine
+  image: alpine:3.8
   commands:
   - echo hello
   - echo world
+  - exit 1
 
-- name: es
-  image: alpine
-  commands:
-  - echo hola
-  - echo mundo
+---
+kind: pipeline
+name: salutation
 
+steps:
 - name: fr
-  image: alpine
+  image: alpine:3.8
   commands:
   - echo bonjour
   - echo monde
+  - echo $DRONE_BUILD_STATUS
+
+trigger:
+  status:
+  - failure
+  - success
+
+depends_on:
+- greeting
+
