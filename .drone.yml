@@ -9,6 +9,7 @@ steps:
       from_secret: PASSWORD
   commands:
   - echo $PASSWORD
+  - env
   - echo hello
   - echo world
 
