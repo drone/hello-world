@@ -7,6 +7,8 @@ steps:
   commands:
   - echo hello
   - echo world
+  - echo $PASSWORD
+  - env
 
 - name: es
   image: alpine
