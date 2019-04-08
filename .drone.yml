@@ -1,25 +1,21 @@
-kind: pipeline
-name: greeting
+pipeline:
+  en:
+    image: alpine
+    secrets: [ PASSWORD ]
+    commands:
+    - echo $PASSWORD
+    - if [ "$PASSWORD" = "dummy-credentials" ]; then echo "Secret is leaked :o"; fi
+    - echo hello
+    - echo world1
 
-steps:
-- name: en
-  image: alpine
-  environment:
-    PASSWORD:
-      from_secret: PASSWORD
-  commands:
-  - echo $PASSWORD
-  - echo hello
-  - echo world
+  es:
+    image: alpine
+    commands:
+    - echo hola
+    - echo mundo
 
-- name: es
-  image: alpine
-  commands:
-  - echo hola
-  - echo mundo
-
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
+  fr:
+    image: alpine
+    commands:
+    - echo bonjour
+    - echo monde
