@@ -9,8 +9,6 @@ steps:
   image: docker:git
   commands:
   - git clone https://github.com/octocat/hello-world.git
-  - cd hello-world
-  - git checkout $DRONE_COMMIT
 
 - name: build
   image: alpine:3.8
