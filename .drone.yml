@@ -1,21 +1,19 @@
 kind: pipeline
-name: greeting
+name: default
+
+clone:
+  disable: true
 
 steps:
-- name: en
-  image: alpine
+- name: clone
+  image: docker:git
   commands:
-  - echo hello
-  - echo world
+  - git clone https://github.com/octocat/hello-world.git
+  - git checkout $DRONE_COMMIT
 
-- name: es
-  image: alpine
+- name: build
+  image: alpine:3.8
   commands:
-  - echo hola
-  - echo mundo
+  - cd hello-world
+  - ls -la
 
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
