@@ -1,31 +1,24 @@
-kind: pipeline
-name: greeting
-
-steps:
-- name: en
-  image: alpine:3.8
-  commands:
-  - echo hello
-  - echo world
-  - exit 1
-
 ---
 kind: pipeline
-name: salutation
+name: default
+
+platform:
+  os: linux
+  arch: amd64
 
 steps:
-- name: fr
+- name: build
   image: alpine:3.8
   commands:
-  - echo bonjour
-  - echo monde
-  - echo $DRONE_BUILD_STATUS
+  - echo hello world
+  - echo $USERNAME
+  environment:
+    USERNAME:
+      from_secret: username
 
-trigger:
-  status:
-  - failure
-  - success
+---
+kind: secret
+name: username
+data: yaF5r1Sj3qu4G38Zcuj0mnR_DLQKK6PjShg3uxILVf0h8TL3QdK1j2qoSTwRJFwQvgf545ibL0Y=
 
-depends_on:
-- greeting
-
+...
