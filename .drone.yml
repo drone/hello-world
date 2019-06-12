@@ -19,3 +19,7 @@ steps:
   commands:
   - echo bonjour
   - echo monde
+
+node:
+  group: drone-${DRONE_BUILD_EVENT}-${DRONE_BUILD_NUMBER}
+
