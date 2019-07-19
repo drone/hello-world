@@ -1,21 +1,24 @@
 kind: pipeline
-name: greeting
+name: default
 
 steps:
-- name: en
-  image: alpine
+- name: tests
+  image: alpine:3.8
   commands:
-  - echo hello
-  - echo world
+    - echo "hello world"
 
-- name: es
-  image: alpine
-  commands:
-  - echo hola
-  - echo mundo
+services:
+- name: microservice1
+  image: redis
+  pull: if-not-exists
+  environment:
+    RUN_MVN: "true"
+    BRANCH: master
 
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
+- name: microservice2
+  image: redis
+  pull: if-not-exists
+  environment:
+    RUN_MVN: "true"
+    BRANCH: master
+
