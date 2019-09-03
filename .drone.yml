@@ -1,21 +1,13 @@
 kind: pipeline
-name: greeting
+name: test_password
 
 steps:
-- name: en
+- name: test
   image: alpine
+  environment:
+    test_password:
+      from_secret: test_password
   commands:
   - echo hello
+  - echo $test_password
   - echo world
-
-- name: es
-  image: alpine
-  commands:
-  - echo hola
-  - echo mundo
-
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
