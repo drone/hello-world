@@ -8,7 +8,8 @@ def main(ctx):
                 "name": "greetings",
                 "image": "alpine",
                 "commands": [
-                    "echo hello starlark"
+                    "echo hello starlark",
+                    "echo " + ctx.build.ref
                 ]
             }
         ]
