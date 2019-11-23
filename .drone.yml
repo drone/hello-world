@@ -9,6 +9,12 @@ steps:
   - echo hello
   - echo world
 
+- name: de
+  image: alpine
+  commands:
+  - echo Hallo
+  - echo Welt
+
 - name: es
   image: alpine
   commands:
