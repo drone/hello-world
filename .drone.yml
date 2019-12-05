@@ -27,4 +27,5 @@ steps:
   - echo bar
   when:
     branch:
-    - master
+      include:
+      - master
