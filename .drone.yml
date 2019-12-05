@@ -19,3 +19,12 @@ steps:
   - echo foo
   - "[System.Environment]::OSVersion.Version"
   - echo bar
+
+- name: test-master
+  commands:
+  - echo foo
+  - "[System.Environment]::OSVersion.Version"
+  - echo bar
+  when:
+    branch:
+    - master
