@@ -13,7 +13,6 @@ steps:
   image: alpine
   commands:
   - echo hola
-  - echo mundo
 
 - name: fr
   image: alpine
