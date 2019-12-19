@@ -23,4 +23,4 @@ steps:
 
 trigger:
   branch:
-  - develop
+  - master
