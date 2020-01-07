@@ -21,6 +21,5 @@ steps:
   - echo bonjour
   - echo monde
 
-trigger:
-  branch:
-  - develop
+node:
+  type: build
