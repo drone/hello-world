@@ -1,25 +1,15 @@
 kind: pipeline
 type: docker
-name: greeting
+name: default
 
 steps:
-- name: en
+- name: print
   image: alpine
   commands:
-  - echo hello
-  - echo world
+  - echo $DRONE_COMMIT_LINK
+  - echo $DRONE_COMMIT_AUTHOR_EMAIL
+  - echo $DRONE_STAGE_VARIANT
+  - echo $DRONE_COMMIT_AUTHOR_NAME
+  - echo $DRONE_COMMIT_BEFORE
+  - echo $DRONE_STAGE_MACHINE
 
-- name: es
-  image: alpine
-  commands:
-  - echo hola
-  - echo mundo
-
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
-
-node:
-  type: build
