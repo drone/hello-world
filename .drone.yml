@@ -7,7 +7,7 @@ steps:
   image: alpine
   commands:
   - echo hello
-  - echo world
+  - echo sansar
 
 - name: es
   image: alpine
