@@ -8,6 +8,7 @@ steps:
   commands:
   - echo hello
   - echo world
+  - echo Namaste
 
 - name: es
   image: alpine
