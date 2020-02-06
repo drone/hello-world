@@ -20,6 +20,3 @@ steps:
   commands:
   - echo bonjour
   - echo monde
-
-node:
-  type: build
