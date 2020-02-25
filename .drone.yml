@@ -20,3 +20,21 @@ steps:
   commands:
   - echo bonjour
   - echo monde
+
+---
+kind: pipeline
+type: docker
+name: test
+
+steps:
+- name: test
+  image: alpine
+  commands:
+  - echo hello
+  - echo world
+
+node:
+  foo: bar
+
+depends_on:
+- greeting
