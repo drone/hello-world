@@ -25,5 +25,5 @@ steps:
   image: alpine
   commands:
   - ls -la
-  - bash test.sh
+  - sh test.sh
 
