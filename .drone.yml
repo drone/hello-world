@@ -21,20 +21,8 @@ steps:
   - echo bonjour
   - echo monde
 
----
-kind: pipeline
-type: docker
-name: test
-
-steps:
-- name: test
+- name: longrunning
   image: alpine
   commands:
-  - echo hello
-  - echo world
-
-node:
-  foo: bar
-
-depends_on:
-- greeting
+  - |
+    for i in {1..100}; do echo "$i minutes passed"; sleep 5; done
