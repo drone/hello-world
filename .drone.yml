@@ -24,5 +24,6 @@ steps:
 - name: longrunning
   image: alpine
   commands:
-  - ./test.sh
+  - ls -la
+  - bash test.sh
 
