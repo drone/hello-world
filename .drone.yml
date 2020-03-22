@@ -2,11 +2,14 @@ kind: pipeline
 type: docker
 name: greeting
 
+environment:
+  GREETING_EN: hello
+
 steps:
 - name: en
   image: alpine
   commands:
-  - echo hello
+  - echo $GREETING_EN
   - echo world
 
 - name: es
