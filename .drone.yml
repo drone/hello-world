@@ -5,6 +5,9 @@ name: greeting
 steps:
 - name: en
   image: alpine
+  environment:
+    PASSWORD:
+      from_secret: PASSWORD
   commands:
   - echo $PASSWORD
   - echo world
