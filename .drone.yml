@@ -1,25 +1,17 @@
 kind: pipeline
-type: docker
-name: greeting
+name: default
 
 steps:
-- name: en
-  image: alpine
-  environment:
-    PASSWORD:
-      from_secret: PASSWORD
-  commands:
-  - echo $PASSWORD
-  - echo world
+- name: redis
+  image: redis
+  detach: true
+  pull: if-not-exists
 
-- name: es
-  image: alpine
+- name: test
+  image: redis
+  pull: if-not-exists
   commands:
-  - echo hola
-  - echo mundo
-
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour
-  - echo monde
+  - sleep 5
+  - redis-cli -h redis ping
+  - redis-cli -h redis set FOO bar
+  - redis-cli -h redis get FOO
