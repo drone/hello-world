@@ -1,17 +1,45 @@
 kind: pipeline
-name: default
+type: docker
+name: greeting
 
 steps:
-- name: redis
-  image: redis
-  detach: true
-  pull: if-not-exists
+  - name: en
+    image: alpine:3.8
+    commands:
+      - echo hello
+      - echo world
+      - sleep 10
+      - exit 1
 
-- name: test
-  image: redis
-  pull: if-not-exists
-  commands:
-  - sleep 5
-  - redis-cli -h redis ping
-  - redis-cli -h redis set FOO bar
-  - redis-cli -h redis get FOO
+---
+kind: pipeline
+type: docker
+name: saludo
+
+steps:
+  - name: es
+    image: alpine:3.8
+    commands:
+      - echo hola
+      - echo mundo
+
+---
+kind: pipeline
+type: docker
+name: salutation
+
+steps:
+  - name: fr
+    image: alpine:3.8
+    commands:
+      - echo bonjour
+      - echo monde
+      - echo $DRONE_BUILD_STATUS
+
+trigger:
+  status:
+  - failure
+
+depends_on:
+  - greeting
+  - saludo
