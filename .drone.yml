@@ -1,17 +1,30 @@
+---
 kind: pipeline
+name: unit tests
 type: docker
-name: default
 
 clone:
   disable: true
 
 steps:
-  - name: clone
-    image: alpine:3.8
-    commands:
-      - echo this is a clone step
+- name: clone
+  image: alpine/git
+  commands:
+  - echo run clone tests
 
-  - name: build
-    image: alpine:3.8
-    commands:
-      - echo this is a build step
+- name: run python tests
+  image: alpine
+  environment:
+    FOO: BAR
+  commands:
+    - echo run python tests
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
+
+trigger:
+  branch:
+    exclude:
+      - master
