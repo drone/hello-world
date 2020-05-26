@@ -10,7 +10,15 @@ steps:
 - name: clone
   image: alpine/git
   commands:
-  - echo run clone tests
+  - git init
+  - git config remote.origin.url $DRONE_REMOTE_URL
+  - git fetch origin +$DRONE_COMMIT_REF
+  - git fetch origin +refs/heads/${DRONE_COMMIT_BRANCH}
+  - git checkout $DRONE_COMMIT_SHA -b $DRONE_COMMIT_BRANCH
+  # Fetch upstream changes
+  - git fetch origin +refs/heads/master:refs/remotes/origin/master
+  # Merge master into local
+  - git merge $(git rev-parse origin/master)
 
 - name: run python tests
   image: alpine
