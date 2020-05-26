@@ -19,11 +19,6 @@ steps:
   commands:
     - echo run python tests
 
-volumes:
-  - name: docker
-    host:
-      path: /var/run/docker.sock
-
 trigger:
   branch:
     exclude:
