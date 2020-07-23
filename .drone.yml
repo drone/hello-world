@@ -2,16 +2,8 @@ kind: pipeline
 type: docker
 name: default
 
-clone:
-  disable: true
-
 steps:
-  - name: clone
+  - name: test
     image: alpine:3.8
     commands:
-      - echo this is a clone step
-
-  - name: build
-    image: bradrydzewski/private-test
-    commands:
-      - echo this is a build step
+      - echo hello world
