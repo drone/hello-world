@@ -7,3 +7,10 @@ steps:
     image: alpine:3.8
     commands:
       - echo ${DRONE_BRANCH//\//-}
+
+  - name: pushg
+    image: plugins/docker
+    settings:
+      tag: ${DRONE_BRANCH//\//-}
+      repo: foo/bar
+      dry_run: true
