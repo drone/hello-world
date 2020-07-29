@@ -6,4 +6,5 @@ steps:
   - name: test
     image: alpine:3.8
     commands:
-      - echo hello world
+      - echo hello
+      - echo world
