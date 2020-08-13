@@ -1,10 +1,16 @@
+greeting: &greeting
+  image: alpine:3.8
+  commands:
+    - echo hello
+    - echo world
+
 kind: pipeline
 type: docker
-name: default
+name: anchors
 
 steps:
-  - name: test
-    image: alpine:3.8
-    commands:
-      - echo bonjour
-      - echo monde
+- name: hello
+  <<: *greeting
+  when:
+    event: push
+    branch: master
