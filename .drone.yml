@@ -1,16 +1,114 @@
-greeting: &greeting
-  image: alpine:3.8
-  commands:
-    - echo hello
-    - echo world
-
+---
 kind: pipeline
-type: docker
-name: anchors
+name: hello-on-amd64
+
+platform:
+  os: linux
+  arch: amd64
 
 steps:
-- name: hello
-  <<: *greeting
-  when:
-    event: push
-    branch: master
+- name: en
+  image: alpine
+  commands:
+  - echo hello
+  - echo world
+
+- name: es
+  image: alpine
+  commands:
+  - echo hola
+  - echo mundo
+
+- name: fr
+  image: alpine
+  commands:
+  - echo bonjour
+  - echo monde
+
+---
+kind: pipeline
+name: hello-on-arm
+
+platform:
+  os: linux
+  arch: arm
+
+steps:
+- name: en
+  image: alpine
+  commands:
+  - echo hello
+  - echo world
+
+- name: es
+  image: alpine
+  commands:
+  - echo hola
+  - echo mundo
+
+- name: fr
+  image: alpine
+  commands:
+  - echo bonjour
+  - echo monde
+
+---
+kind: pipeline
+name: hello-on-arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+- name: en
+  image: alpine
+  commands:
+  - echo hello
+  - echo world
+
+- name: es
+  image: alpine
+  commands:
+  - echo hola
+  - echo mundo
+
+- name: fr
+  image: alpine
+  commands:
+  - echo bonjour
+  - echo monde
+
+---
+kind: pipeline
+name: goodbye
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: en
+  image: alpine
+  commands:
+  - echo goodbye
+  - echo world
+
+- name: es
+  image: alpine
+  commands:
+  - echo adios
+  - echo mundo
+
+- name: fr
+  image: alpine
+  commands:
+  - echo au revoir
+  - echo monde
+
+depends_on:
+- hello-on-arm
+- hello-on-arm64
+- hello-on-amd64
+
+...
