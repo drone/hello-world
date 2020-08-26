@@ -7,3 +7,8 @@ steps:
   commands:
   - echo hello
   - echo world
+  - sleep 10
+
+services:
+- name: redis
+  image: redis
