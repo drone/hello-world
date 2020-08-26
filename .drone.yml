@@ -6,16 +6,4 @@ steps:
   image: alpine:3.8
   commands:
   - echo hello
-  - exit 78
-
-- name: test2
-  image: alpine:3.8
-  commands:
-  - echo hello
-  - sleep 60
   - echo world
-
-services:
-- name: redis
-  image: redis
-  pull: if-not-exists
