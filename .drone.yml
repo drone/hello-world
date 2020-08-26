@@ -1,5 +1,21 @@
 kind: pipeline
-name: default
+name: build
+
+steps:
+- name: test
+  image: alpine:3.8
+  commands:
+  - echo hello
+  - echo world
+
+services:
+- name: redis
+  image: redis
+
+---
+
+kind: pipeline
+name: test
 
 steps:
 - name: test
@@ -9,6 +25,5 @@ steps:
   - echo world
   - sleep 10
 
-services:
-- name: redis
-  image: redis
+depends_on:
+- build
