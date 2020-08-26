@@ -3,13 +3,12 @@ name: default
 
 steps:
 - name: test
-  image: redis
+  image: alpine:3.8
   commands:
-  - sleep 5
-  - redis-cli -h redis ping
-  - redis-cli -h redis set FOO bar
-  - redis-cli -h redis get FOO
+  - echo hello
+  - exit 78
 
-services:
-- name: redis
-  image: redis
+- name: test2
+  image: alpine:3.8
+  commands:
+  - echo world
