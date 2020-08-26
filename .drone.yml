@@ -11,4 +11,6 @@ steps:
 - name: test2
   image: alpine:3.8
   commands:
+  - echo hello
+  - sleep 60
   - echo world
