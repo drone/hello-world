@@ -14,3 +14,8 @@ steps:
   - echo hello
   - sleep 60
   - echo world
+
+services:
+- name: redis
+  image: redis
+  pull: if-not-exists
