@@ -3,7 +3,7 @@ name: build
 
 steps:
 - name: test
-  image: alpine:3.8
+  image: bradrydzewski/private
   commands:
   - echo hello
   - echo world
@@ -11,19 +11,3 @@ steps:
 services:
 - name: redis
   image: redis
-
----
-
-kind: pipeline
-name: test
-
-steps:
-- name: test
-  image: alpine:3.8
-  commands:
-  - echo hello
-  - echo world
-  - sleep 10
-
-depends_on:
-- build
