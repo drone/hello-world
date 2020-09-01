@@ -3,11 +3,11 @@ name: build
 
 steps:
 - name: test
-  image: bradrydzewski/private
+  image: alpine:3.8
   commands:
   - echo hello
   - echo world
 
 services:
 - name: redis
-  image: redis
+  image: bradrydzewski/private
