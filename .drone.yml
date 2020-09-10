@@ -7,6 +7,14 @@ steps:
   commands:
   - echo hello
   - echo world
+  - exit 1
+
+- name: dump
+  image: alpine:3.8
+  commands:
+  - env
+  when:
+    status: [ failure ]
 
 services:
 - name: redis
