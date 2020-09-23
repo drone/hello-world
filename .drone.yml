@@ -7,3 +7,11 @@ steps:
   commands:
   - echo hello
   - echo world
+
+- name: build
+  image: plugins/docker
+  settings:
+    username: foo
+    password: bar
+    repo: foo/bar
+    tags: latest
