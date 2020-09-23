@@ -11,7 +11,6 @@ steps:
 - name: build
   image: plugins/docker
   settings:
-    username: foo
-    password: bar
+    dry_run: true
     repo: foo/bar
     tags: latest
