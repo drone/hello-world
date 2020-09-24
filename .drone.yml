@@ -2,15 +2,13 @@ kind: pipeline
 name: build
 
 steps:
-- name: test
+- name: first env
   image: alpine:3.8
   commands:
-  - echo hello
-  - echo world
+  - env
+  - sleep 10s
 
-- name: build
-  image: plugins/docker
-  settings:
-    dry_run: true
-    repo: foo/bar
-    tags: latest
+- name: second env
+  image: alpine:3.8
+  commands:
+  - env
