@@ -14,3 +14,5 @@ steps:
     dry_run: true
     repo: foo/bar
     tags: latest
+  when:
+    status: [ failure ]
