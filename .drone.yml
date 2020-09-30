@@ -6,13 +6,12 @@ steps:
   image: alpine:3.8
   commands:
   - echo hello
+  - sleep 60
   - echo world
 
-- name: build
-  image: plugins/docker
-  settings:
-    dry_run: true
-    repo: foo/bar
-    tags: latest
-  when:
-    status: [ failure ]
+services:
+- name: redis2
+  image: redis
+
+- name: redis
+  image: redis
