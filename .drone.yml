@@ -2,16 +2,18 @@ kind: pipeline
 name: build
 
 steps:
-- name: test
+- name: test1
   image: alpine:3.8
   commands:
   - echo hello
-  - sleep 60
   - echo world
 
-services:
-- name: redis2
+- name: redis
+  detach: true
   image: redis
 
-- name: redis
-  image: redis
+- name: test2
+  image: alpine:3.8
+  commands:
+  - echo hello
+  - echo world
