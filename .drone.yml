@@ -5,7 +5,12 @@ steps:
 - name: test1
   image: alpine:3.8
   commands:
-  - echo "echo hello" >> test.sh
-  - echo "echo world" >> test.sh
-  - chmod +x test.sh
-  - ./test.sh
+  - pwd
+  - echo "echo from outside volume" > /tmp/foo.sh
+  - chmod +x /tmp/foo.sh
+  - cat /tmp/foo.sh
+  - /tmp/foo.sh
+  - echo "echo from drone src" > /drone/src/foo.sh
+  - chmod +x /drone/src/foo.sh
+  - cat /drone/src/foo.sh
+  - /drone/src/foo.sh
