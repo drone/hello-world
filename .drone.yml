@@ -5,15 +5,7 @@ steps:
 - name: test1
   image: alpine:3.8
   commands:
-  - echo hello
-  - echo world
-
-- name: redis
-  detach: true
-  image: redis
-
-- name: test2
-  image: alpine:3.8
-  commands:
-  - echo hello
-  - echo world
+  - echo "echo hello" >> test.sh
+  - echo "echo world" >> test.sh
+  - chmod +x test.sh
+  - ./test.sh
