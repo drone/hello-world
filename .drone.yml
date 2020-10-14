@@ -2,15 +2,22 @@ kind: pipeline
 name: build
 
 steps:
-- name: test1
+- name: hello
   image: alpine:3.8
   commands:
-  - pwd
-  - echo "echo from outside volume" > /tmp/foo.sh
-  - chmod +x /tmp/foo.sh
-  - cat /tmp/foo.sh
-  - /tmp/foo.sh
-  - echo "echo from drone src" > /drone/src/foo.sh
-  - chmod +x /drone/src/foo.sh
-  - cat /drone/src/foo.sh
-  - /drone/src/foo.sh
+  - echo hello
+  
+- name: world
+  image: alpine:3.8
+  commands:
+  - echo world
+  - exit 78
+  
+- name: goodbye
+  image: alpine:3.8
+  commands:
+  - echo goodbye
+
+services:
+- name: redis
+  image: redis
