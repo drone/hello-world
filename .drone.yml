@@ -13,10 +13,15 @@ steps:
   - echo world
   - exit 78
   
-- name: goodbye
+- name: bonjour
   image: alpine:3.8
   commands:
-  - echo goodbye
+  - echo bonjour
+
+- name: monde
+  image: alpine:3.8
+  commands:
+  - echo monde
 
 services:
 - name: redis
