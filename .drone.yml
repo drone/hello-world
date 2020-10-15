@@ -6,13 +6,13 @@ steps:
   image: alpine:3.8
   commands:
   - echo hello
-  - sleep 15
+  - sleep 5
   
 - name: world
   image: alpine:3.8
   commands:
   - echo world
-  - sleep 15
+  - sleep 60
   - exit 78
   
 - name: bonjour
