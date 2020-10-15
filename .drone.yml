@@ -6,22 +6,26 @@ steps:
   image: alpine:3.8
   commands:
   - echo hello
+  - sleep 15
   
 - name: world
   image: alpine:3.8
   commands:
   - echo world
+  - sleep 15
   - exit 78
   
 - name: bonjour
   image: alpine:3.8
   commands:
   - echo bonjour
+  - sleep 5
 
 - name: monde
   image: alpine:3.8
   commands:
   - echo monde
+  - sleep 5
 
 services:
 - name: redis
