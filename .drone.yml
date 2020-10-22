@@ -4,29 +4,12 @@ name: build
 steps:
 - name: hello
   image: alpine:3.8
+  environment:
+    from_secret: password
   commands:
-  - echo hello
-  - sleep 5
+  - echo $PASSWORD
   
-- name: world
-  image: alpine:3.8
-  commands:
-  - echo world
-  - sleep 60
-  - exit 78
-  
-- name: bonjour
-  image: alpine:3.8
-  commands:
-  - echo bonjour
-  - sleep 5
-
-- name: monde
-  image: alpine:3.8
-  commands:
-  - echo monde
-  - sleep 60
-
-services:
-- name: redis
-  image: redis
+---
+kind: secret
+name: password
+data: qT0IGWVhUz7RAxYo5pXSEYOiTqMqjbVs9BHQ8LY49s7oRoj4H+6JPA==
