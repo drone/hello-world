@@ -5,7 +5,8 @@ steps:
 - name: hello
   image: alpine:3.8
   environment:
-    from_secret: password
+    PASSWORD:
+      from_secret: password
   commands:
   - echo $PASSWORD
   
