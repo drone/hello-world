@@ -4,13 +4,5 @@ name: build
 steps:
 - name: hello
   image: alpine:3.8
-  environment:
-    PASSWORD:
-      from_secret: password
   commands:
-  - echo $PASSWORD
-  
----
-kind: secret
-name: password
-data: qT0IGWVhUz7RAxYo5pXSEYOiTqMqjbVs9BHQ8LY49s7oRoj4H+6JPA==
+  - env
