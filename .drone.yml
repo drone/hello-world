@@ -2,7 +2,21 @@ kind: pipeline
 name: build
 
 steps:
-- name: hello
+- name: fail
   image: alpine:3.8
   commands:
-  - env
+  - exit 1
+
+- name: skip_on_fail
+  image: alpine:3.8
+  commands:
+  - echo this should not run
+
+- name: run_on_fail
+  image: alpine:3.8
+  commands:
+  - echo "this should run, pipeline is failing"
+  when:
+    status:
+    - success
+    - failure
