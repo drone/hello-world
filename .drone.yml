@@ -1,22 +1,131 @@
 kind: pipeline
-name: build
+type: docker
+name: test-build-deploy
+
+services:
+  - name: cypress-xvfb
+    image: redis
 
 steps:
-- name: fail
-  image: alpine:3.8
-  commands:
-  - exit 1
+  - name: submodule
+    image: alpine/git
+    commands:
+      - echo submodule
+      - sleep 10
+    depends_on:
+      - clone
 
-- name: skip_on_fail
-  image: alpine:3.8
-  commands:
-  - echo this should not run
+  - name: prepare
+    image: alpine:3.8
+    commands:
+      - echo prepare
+      - sleep 10
+    depends_on:
+      - clone
 
-- name: run_on_fail
-  image: alpine:3.8
-  commands:
-  - echo "this should run, pipeline is failing"
-  when:
-    status:
-    - success
-    - failure
+  - name: eslint
+    image: alpine:3.8
+    commands:
+      - echo eslint
+      - sleep 10
+    depends_on:
+      - prepare
+      - submodule
+
+  - name: jest_1
+    image: alpine:3.8
+    commands:
+      - echo jest1
+      - sleep 10
+    depends_on:
+      - prepare
+      - submodule
+
+  - name: jest_2
+    image: alpine:3.8
+    commands:
+      - echo jest2
+      - sleep 10
+    depends_on:
+      - prepare
+      - submodule
+
+  - name: cypress_1
+    image: alpine:3.8
+    commands:
+      - echo cypress1
+      - sleep 10
+    depends_on:
+      - prepare
+      - submodule
+
+  - name: cypress_2
+    image: alpine:3.8
+    commands:
+      - echo cypress2
+      - sleep 10
+    depends_on:
+      - prepare
+      - submodule
+
+  - name: cypress_3
+    image: alpine:3.8
+    commands:
+      - echo cypress3
+      - sleep 10
+    depends_on:
+      - prepare
+      - submodule
+
+  - name: build
+    image: alpine:3.8
+    commands:
+      - echo builds
+      - sleep 10
+    when:
+      event:
+        include:
+          - tag
+    depends_on:
+      - prepare
+      - submodule
+
+  - name: publish
+    image: alpine:3.8
+    commands:
+      - echo publish
+      - sleep 10
+    when:
+      event:
+        include:
+          - tag
+    depends_on:
+      - eslint
+      - jest_1
+      - jest_2
+      - cypress_1
+      - cypress_2
+      - cypress_3
+      - build
+
+  - name: release_notes
+    image: ruby:2.4.2-alpine
+    commands:
+      - apk add --no-cache git
+      - git clone --depth 1 --branch droneci $SOME_URL_HERE$ release_notes
+      - cd release_notes && bundle install
+      - rm -rf .git
+      - ruby create_changelog_last_tag.rb
+    environment:
+      GITHUB_USER:
+        from_secret: GITHUB_USER
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+      RELEASE_NOTES_NOTIFY:
+        from_secret: RELEASE_NOTES_NOTIFY
+    when:
+      event:
+        include:
+          - tag
+    depends_on:
+      - publish
