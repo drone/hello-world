@@ -2,17 +2,21 @@ kind: pipeline
 type: docker
 name: default
 
-platform:
-  os: linux
-  arch: arm64
-
 steps:
-  - name: test_missing_secret
+  - name: en
     image: alpine
-    environment:
-      SECRET:
-        from_secret: this_secret_does_not_exist
     commands:
-      - echo hello
-      - echo $SECRET
-      - echo goodbye
+    - echo hello
+    - echo world
+    
+  - name: fr
+    image: alpine
+    commands:
+    - echo bounjour
+    - echo monde
+    when:
+      ref:
+        include:
+        - refs/heads/feature-*
+        exclude:
+        - refs/heads/**
