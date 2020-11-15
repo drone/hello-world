@@ -1,0 +1,40 @@
+{
+  "name": "teenyui",
+  "version": "0.1.1",
+  "description": "Tiny UI library for Preact",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "source": "./src/index.ts",
+  "repository": "git@git.dany.dev:dsluijk/teenyui.git",
+  "author": "Dany Sluijk <me@dany.dev>",
+  "license": "GPL-3.0",
+  "sideEffects": false,
+  "scripts": {
+    "lint": "yarn lint-ts && yarn lint-scss",
+    "lint-ts": "eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx ./src",
+    "lint-scss": "stylelint './src/**/*.scss'",
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "commit": "cz"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "commitizen": "^4.2.2",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "node-sass": "^5.0.0",
+    "preact": "^10.5.5",
+    "rollup": "^2.33.1",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "typescript": "^4.0.3"
+  },
+  "peerDependencies": {
+    "preact": "^10.5.5"
+  }
+}
+

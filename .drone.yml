@@ -1,22 +1,11 @@
+---
 kind: pipeline
-type: docker
-name: default
+type: kubernetes
+name: Checks
 
 steps:
-  - name: en
-    image: alpine
+  - name: Linting
+    image: node:10-buster
     commands:
-    - echo hello
-    - echo world
-    
-  - name: fr
-    image: alpine
-    commands:
-    - echo bounjour
-    - echo monde
-    when:
-      ref:
-        include:
-        - refs/heads/feature-*
-        exclude:
-        - refs/heads/**
+      - yarn
+
