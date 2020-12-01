@@ -3,20 +3,12 @@ type: docker
 name: default
 
 steps:
-  - name: en
-    image: alpine
-    commands:
-    - echo hello
-    - echo world
-    
-  - name: fr
-    image: alpine
-    commands:
-    - echo bounjour
-    - echo monde
-    when:
-      ref:
-        include:
-        - refs/heads/feature-*
-        exclude:
-        - refs/heads/**
+  - name: build
+    image: plugins/docker
+    pull: if-not-exists
+    settings:
+      dry_run: true
+      repo: foo/bar
+      tags:
+      - latest
+      - ${DRONE_BRANCH}
