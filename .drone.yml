@@ -14,9 +14,3 @@ steps:
     commands:
     - echo bounjour
     - echo monde
-    when:
-      ref:
-        include:
-        - refs/heads/feature-*
-        exclude:
-        - refs/heads/**
