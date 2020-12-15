@@ -3,12 +3,19 @@ type: docker
 name: default
 
 steps:
+  - name: generate
+    image: alpine
+    pull: if-not-exists
+    commands:
+    - echo PLUGIN_REPO=foo/bar > inputs.txt
+    - cat inputs.txt
+
   - name: build
     image: plugins/docker
     pull: if-not-exists
     settings:
       dry_run: true
-      repo: foo/bar
+      env_file: inputs.txt
       tags:
       - latest
       - ${DRONE_BRANCH}
