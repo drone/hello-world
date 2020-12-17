@@ -3,43 +3,10 @@ type: docker
 name: default
 
 steps:
-  - name: en
-    image: alpine
+  - name: build
+    image: plugins/docker
     pull: if-not-exists
-    commands:
-    - echo hello
-    - sleep 22
-    - echo world
-    depends_on:
-    - clone
-    
-  - name: fr
-    image: alpine
-    pull: if-not-exists
-    commands:
-    - echo bounjour
-    - sleep 25
-    - echo monde
-    depends_on:
-    - clone
-
-  - name: es
-    image: alpine
-    pull: if-not-exists
-    commands:
-    - echo hola
-    - sleep 20
-    - echo mundo
-    depends_on:
-    - clone
-    
-  - name: fin
-    image: alpine
-    pull: if-not-exists
-    commands:
-    - echo fin
-    depends_on:
-    - fr
-    - en
-    - es
-    
+    settings:
+      repo: foo/bar
+      tags: prod
+      dry_run: true
