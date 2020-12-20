@@ -7,7 +7,7 @@ steps:
     image: alpine
     pull: if-not-exists
     commands:
-    - echo this should execute
+    - echo this should NOT execute
     when:
       repo: bradrydzewski/hello-world
     
@@ -15,6 +15,6 @@ steps:
     image: alpine
     pull: if-not-exists
     commands:
-    - echo this should NOT execute
+    - echo this should execute
     when:
       repo: drone/hello-world
