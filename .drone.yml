@@ -7,4 +7,4 @@ steps:
     image: alpine
     pull: if-not-exists
     commands:
-    - echo --${DRONE_COMMIT_MESSAGE}--
+    - echo "${DRONE_COMMIT_MESSAGE}"
