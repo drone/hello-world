@@ -7,14 +7,4 @@ steps:
     image: alpine
     pull: if-not-exists
     commands:
-    - echo this should NOT execute
-    when:
-      repo: bradrydzewski/hello-world
-    
-  - name: test2
-    image: alpine
-    pull: if-not-exists
-    commands:
-    - echo this should execute
-    when:
-      repo: drone/hello-world
+    - echo --${DRONE_COMMIT_MESSAGE}--
