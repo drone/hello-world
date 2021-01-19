@@ -3,8 +3,17 @@ type: docker
 name: default
 
 steps:
-  - name: test1
+  - name: hello
     image: alpine
     pull: if-not-exists
     commands:
-    - echo "${DRONE_COMMIT_MESSAGE}"
+    - echo hello
+    - echo world
+
+  - name: notify
+    image: plugins/slack
+    pull: if-not-exists
+    settings:
+      webhook:
+        from_secret: slack_webhook
+      channel: bradrydzewski
