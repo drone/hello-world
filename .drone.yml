@@ -13,10 +13,9 @@ steps:
   - name: build
     image: plugins/docker
     settings:
-      username: foo
-      password: bar
       repo: foo/bar
       tags: latest
+      dry_run: true
       debug: true
     volumes:
     - name: temp
@@ -29,7 +28,3 @@ steps:
       webhook:
         from_secret: slack_webhook
       channel: bradrydzewski
-
-volumes:
-- name: temp
-  temp: {}
