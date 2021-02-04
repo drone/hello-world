@@ -1,7 +1,6 @@
 kind: pipeline
 type: docker
 name: default
-
 steps:
   - name: hello
     image: alpine
@@ -10,21 +9,26 @@ steps:
     - echo hello
     - echo world
 
-  - name: build
-    image: plugins/docker
-    settings:
-      repo: foo/bar
-      tags: latest
-      dry_run: true
-      debug: true
-    volumes:
-    - name: temp
-      path: /tmp
+  - name: backend
+    image: alpine
+    commands:
+    - echo backend
+    depends_on:
+      - hello
+
+  - name: frontend
+    image: node
+    commands:
+    - npm install
+    - echo frontend
+    depends_on:
+      - hello
 
   - name: notify
-    image: plugins/slack
-    pull: if-not-exists
-    settings:
-      webhook:
-        from_secret: slack_webhook
-      channel: bradrydzewski
+    image: alpine
+    commands:
+    - echo hello frontend backend passed
+    depends_on:
+      - hello
+      - frontend
+      - backend
