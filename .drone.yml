@@ -10,4 +10,5 @@ steps:
     image: alpine/git
     commands:
     - git clone https://github.com/drone/hello-world.git .
+    - la -la
 
