@@ -2,13 +2,9 @@ kind: pipeline
 type: docker
 name: default
 
-clone:
-  disable: true
-
 steps:
-  - name: pull
-    image: alpine/git
+  - name: test
+    image: alpine
     commands:
-    - git clone https://github.com/drone/hello-world.git .
-    - ls -la
-
+    - echo hello
+    - echo world
