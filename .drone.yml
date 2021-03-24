@@ -22,3 +22,4 @@ steps:
       project: DRONE
       cloud_id: b11a072e-a403-418d-a809-fbf4eb9c434b
       environment: staging
+
