@@ -12,3 +12,12 @@ steps:
     - git clone https://github.com/drone/hello-world.git .
     - ls -la
 
+  - name: jira
+    image: plugins/jira
+    settings:
+      client_id:
+        from_secret: jira_client_id
+      client_secret:
+        from_secret: jira_client_secret
+      project: DRONE
+      cloud_id: b11a072e-a403-418d-a809-fbf4eb9c434b
