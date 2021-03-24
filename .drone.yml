@@ -21,3 +21,4 @@ steps:
         from_secret: jira_client_secret
       project: DRONE
       cloud_id: b11a072e-a403-418d-a809-fbf4eb9c434b
+      environment: testing
