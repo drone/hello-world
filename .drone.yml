@@ -2,23 +2,8 @@ kind: pipeline
 type: docker
 name: default
 
-clone:
-  disable: true
-
 steps:
-  - name: pull
-    image: alpine/git
+  - name: test
+    image: alpine
     commands:
-    - git clone https://github.com/drone/hello-world.git .
-    - ls -la
-
-  - name: jira
-    image: plugins/jira
-    settings:
-      client_id:
-        from_secret: jira_client_id
-      client_secret:
-        from_secret: jira_client_secret
-      project: DRONE
-      instance: droneio
-      environment: production
+    - echo hello world
