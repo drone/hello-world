@@ -3,7 +3,7 @@ type: docker
 name: default
 
 steps:
-    name: test
+  - name: test
     x-image: alpine
     commands:
     - echo hello world
