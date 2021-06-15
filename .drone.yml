@@ -4,6 +4,6 @@ name: default
 
 steps:
   - name: test
-    image: alpine:3
+    image: alpine:55
     commands:
     - echo hello world
