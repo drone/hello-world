@@ -17,7 +17,8 @@ steps:
   - name: test3
     image: alpine
     commands:
-    - echo pipeline status is $DRONE_STAGE_STATUS
+    - echo stage status is $DRONE_STAGE_STATUS
+    - echo build status is $DRONE_BUILD_STATUS
     when:
       status:
       - success
