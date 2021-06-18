@@ -3,7 +3,22 @@ type: docker
 name: default
 
 steps:
-  - name: test
-    image: alpine:55
+  - name: test1
+    image: alpine
     commands:
-    - echo hello world
+    - echo this should pass
+  
+  - name: test2
+    image: alpine
+    commands:
+    - echo this should fail
+    - exit 2
+
+  - name: test3
+    image: alpine
+    commands:
+    - echo pipeline status is $DRONE_STAGE_STATUS
+    when:
+      status:
+      - success
+      - failure
