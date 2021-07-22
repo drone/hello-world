@@ -3,23 +3,14 @@ type: docker
 name: default
 
 steps:
-  - name: test1
-    image: alpine
+  - name: foo
+    image: alpine:3
+    detach: true
     commands:
-    - echo this should pass
-  
-  - name: test2
-    image: alpine
-    commands:
-    - echo this should fail
-    - exit 2
+    - echo foo
 
-  - name: test3
-    image: alpine
+  - name: bar
+    image: alpine:3
     commands:
-    - echo stage status is $DRONE_STAGE_STATUS
-    - echo build status is $DRONE_BUILD_STATUS
-    when:
-      status:
-      - success
-      - failure
+    - sleep 5
+    - echo bar
