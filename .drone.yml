@@ -2,4 +2,5 @@ kind: pipeline
 type: docker
 name: default
 
-steps: this is invalid
+steps:
+- name: []
