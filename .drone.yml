@@ -3,4 +3,6 @@ type: docker
 name: default
 
 steps:
-- name: []
+- name: foo
+  commands:
+  - echo hello
