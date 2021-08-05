@@ -4,5 +4,6 @@ name: default
 
 steps:
 - name: foo
+  image: this-is-an-invalid-image-that-doest-exist
   commands:
   - echo hello
