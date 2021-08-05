@@ -2,17 +2,4 @@ kind: pipeline
 type: docker
 name: default
 
-steps:
-  - name: foo
-    image: alpine:3
-    detach: true
-    commands:
-    - echo foo
-
-  - name: bar
-    image: alpine:3
-    commands:
-    - sleep 5
-    - echo ba
-[]
-    
+steps: this is invalid
