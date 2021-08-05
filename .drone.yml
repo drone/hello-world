@@ -13,4 +13,6 @@ steps:
     image: alpine:3
     commands:
     - sleep 5
-    - echo bar
+    - echo ba
+[]
+    
