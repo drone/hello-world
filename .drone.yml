@@ -10,3 +10,4 @@ steps:
       from_secret: TEST_SECRET
   commands:
   - echo $SECRET
+
