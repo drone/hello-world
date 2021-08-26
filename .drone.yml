@@ -4,6 +4,9 @@ name: default
 
 steps:
 - name: foo
-  image: this-is-an-invalid-image-that-doest-exist
+  image: alpine
+  environment:
+    SECRET:
+      from_secret: TEST_SECRET
   commands:
-  - echo hello
+  - echo $SECRET
