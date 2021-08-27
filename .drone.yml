@@ -10,7 +10,6 @@ steps:
   - echo the current branch is $DRONE_BRANCH
 
 - name: bar
-- name: foo
   image: alpine
   commands:
   - echo this should never run if branch is master
