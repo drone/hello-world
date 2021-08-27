@@ -1,12 +1,45 @@
 kind: pipeline
 type: docker
-name: default
+name: foo
 
 steps:
 - name: foo
   image: alpine
-  environment:
-    SECRET:
-      from_secret: TEST_SECRET
   commands:
-  - echo $SECRET
+  - echo this should never run if branch is develop
+  - echo the current branch is $DRONE_BRANCH
+
+- name: bar
+- name: foo
+  image: alpine
+  commands:
+  - echo this should never run if branch is master
+  - echo the current branch is $DRONE_BRANCH
+  when:
+    branch:
+      exclude:
+      - master
+  
+
+trigger:
+  branch:
+    exclude:
+    - develop
+
+---
+
+kind: pipeline
+type: docker
+name: bar
+
+steps:
+- name: foo
+  image: alpine
+  commands:
+  - echo this should never run if branch is master
+  - echo the current branch is $DRONE_BRANCH
+
+trigger:
+  branch:
+    exclude:
+    - master
