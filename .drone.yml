@@ -12,6 +12,8 @@ steps:
   image: alpine
   commands:
   - echo world
+  environment:
+    AWS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
 
 - name: scan
   image: plugins/gitleaks
