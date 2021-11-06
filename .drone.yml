@@ -17,3 +17,4 @@ steps:
 
 - name: scan
   image: plugins/gitleaks
+
