@@ -3,42 +3,15 @@ type: docker
 name: foo
 
 steps:
-- name: foo
+- name: build
   image: alpine
   commands:
-  - echo this should never run if branch is develop
-  - echo the current branch is $DRONE_BRANCH
+  - echo hello
 
-- name: bar
+- name: test
   image: alpine
   commands:
-  - echo this should never run if branch is master
-  - echo the current branch is $DRONE_BRANCH
-  when:
-    branch:
-      exclude:
-      - master
-  
+  - echo world
 
-trigger:
-  branch:
-    exclude:
-    - develop
-
----
-
-kind: pipeline
-type: docker
-name: bar
-
-steps:
-- name: foo
-  image: alpine
-  commands:
-  - echo this should never run if branch is master
-  - echo the current branch is $DRONE_BRANCH
-
-trigger:
-  branch:
-    exclude:
-    - master
+- name: scan
+  image: plugins/gitleaks
