@@ -1,22 +1,15 @@
 kind: pipeline
-type: docker
-name: foo
+name: default
 
 steps:
-- name: build
-  image: alpine
-  commands:
-  - echo hello
-  environment:
-    AWS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
+- name: redis
+  image: redis
+  detach: true
 
 - name: test
-  image: alpine
+  image: redis
   commands:
-  - echo world
-  environment:
-    AWS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
-
-- name: scan
-  image: plugins/gitleaks
-
+  - sleep 5
+  - redis-cli -h redis ping
+  - redis-cli -h redis set FOO bar
+  - redis-cli -h redis get FOO
