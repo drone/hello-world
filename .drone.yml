@@ -11,4 +11,6 @@ steps:
 kind: pipeline
 type: docker
 name: bar
-steps: {}
+steps:
+- name: foo
+
