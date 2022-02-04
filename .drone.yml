@@ -3,7 +3,7 @@ type: docker
 name: default
 steps:
 - name: hello
-  image: drone/this-image-does-not-exist # cause docker error
+  image: alpine
   commands:
   - echo hello
   
@@ -11,3 +11,4 @@ steps:
   image: alpine
   commands:
   - echo world
+  - sleep 180
