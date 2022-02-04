@@ -6,10 +6,10 @@ steps:
   image: redis
   commands:
   - sleep 5
-  - redis-cli -h _redis ping
-  - redis-cli -h _redis set FOO bar
-  - redis-cli -h _redis get FOO
+  - redis-cli -h red.is ping
+  - redis-cli -h red.is set FOO bar
+  - redis-cli -h red.is get FOO
 
 services:
-- name: _redis
+- name: red.is
   image: redis
