@@ -1,14 +1,7 @@
 kind: pipeline
-type: {}
+type: docker
 name: default
-
 steps:
-- name: install
-  image: node:16
+- name: test # no image tag will cause linter error
   commands:
-  - npm install 
-
-- name: test
-  image: node:16
-  commands:
-  - ls -la node_modules
+  - echo hello world
