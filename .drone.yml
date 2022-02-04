@@ -1,16 +1,12 @@
 kind: pipeline
 type: docker
-name: foo
+name: default
+
+clone:
+  disable: true
+
 steps:
 - name: hello
-  image: alpine
+  image: drone/this-is-a-fake-image
   commands:
   - echo hello
-
----
-kind: pipeline
-type: docker
-name: bar
-steps:
-- name: foo
-
