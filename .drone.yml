@@ -2,6 +2,12 @@ kind: pipeline
 type: docker
 name: default
 steps:
-- name: test # no image tag will cause linter error
+- name: hello
+  image: drone/this-image-does-not-exist # cause docker error
   commands:
-  - echo hello world
+  - echo hello
+  
+- name: world
+  image: alpine
+  commands:
+  - echo world
