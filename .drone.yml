@@ -1,12 +1,15 @@
 kind: pipeline
-type: docker
 name: default
 
-clone:
-  disable: true
-
 steps:
-- name: hello
-  image: drone/this-is-a-fake-image
+- name: test
+  image: redis
   commands:
-  - echo hello
+  - sleep 5
+  - redis-cli -h redis$ ping
+  - redis-cli -h redis$ set FOO bar
+  - redis-cli -h redis$ get FOO
+
+services:
+- name: redis$
+  image: redis
