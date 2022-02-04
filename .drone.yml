@@ -1,14 +1,14 @@
 kind: pipeline
 type: docker
-name: default
+name: foo
 steps:
 - name: hello
   image: alpine
   commands:
   - echo hello
-  
-- name: world
-  image: alpine
-  commands:
-  - echo world
-  - sleep 180
+
+---
+kind: pipeline
+type: docker
+name: bar
+steps: {}
