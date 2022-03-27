@@ -2,14 +2,14 @@ kind: pipeline
 name: default
 
 steps:
-- name: test
-  image: redis
+- name: write
+  image: alpine
   commands:
-  - sleep 5
-  - redis-cli -h 'redis' ping
-  - redis-cli -h 'redis' set FOO bar
-  - redis-cli -h 'redis' get FOO
+  - pwd
+  - touch hello.txt
 
-services:
-- name: redis
-  image: redis
+- name: read
+  image: alpine
+  commands:
+  - pwd
+  - ls hello.txt
