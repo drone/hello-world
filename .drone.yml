@@ -5,14 +5,8 @@ clone:
   disable: true
 
 steps:
-- name: clone
-  image: docker:git
-  commands:
-  - git clone https://github.com/octocat/hello-world.git
-
 - name: build
   image: alpine:3.8
   commands:
-  - cd hello-world
-  - ls -la
+  - echo hello srinivas
 
