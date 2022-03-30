@@ -6,11 +6,5 @@ steps:
 - name: print
   image: alpine
   commands:
-  - echo $DRONE_BUILD_PARENT
-  - echo $DRONE_COMMIT_LINK
-  - echo $DRONE_COMMIT_AUTHOR_EMAIL
-  - echo $DRONE_STAGE_VARIANT
-  - echo $DRONE_COMMIT_AUTHOR_NAME
-  - echo $DRONE_COMMIT_BEFORE
-  - echo $DRONE_STAGE_MACHINE
+  - echo hello srinivas
 
