@@ -5,11 +5,10 @@ steps:
 - name: write
   image: alpine
   commands:
-  - pwd
-  - touch hello.txt
+  - echo -n "this-is-a-test" > .tags
 
-- name: read
-  image: alpine
-  commands:
-  - pwd
-  - ls hello.txt
+- name: build
+  image: plugins/docker
+  settings:
+    dry_run: true
+    repo: foo/bar
