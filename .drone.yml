@@ -2,13 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: write
+- name: greetings
   image: alpine
   commands:
-  - echo -n "this-is-a-test" > .tags
-
-- name: build
-  image: plugins/docker
-  settings:
-    dry_run: true
-    repo: foo/bar
+  - echo hello world
