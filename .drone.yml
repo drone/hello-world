@@ -5,4 +5,4 @@ steps:
 - name: greetings
   image: alpine
   commands:
-  - echo hello world
+  - echo bonjour monde
