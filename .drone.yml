@@ -3,6 +3,6 @@ name: default
 
 steps:
 - name: greetings
-  image: foobar/bazqux
+  image: alpine
   commands:
-  - echo bonjour monde
+  - env
