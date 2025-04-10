@@ -1,0 +1,22 @@
+service:
+  name: baked manifest_deploymanifest
+  identifier: k8sbakedmanifest_deploymanifest
+  gitOpsEnabled: false
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+      - manifest:
+          identifier: k8se5738ce91db94085b418e90af348bbdd
+          type: HelmChart
+          spec:
+            store:
+              spec:
+                connectorRef: helmapple
+              type: Http
+            chartName: apple-harness-poc-chart
+            chartVersion: ""
+            helmVersion: V3
+            skipResourceVersioning: false
+            enableDeclarativeRollback: false
+            fetchHelmChartMetadata: false
