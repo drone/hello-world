@@ -1,0 +1,34 @@
+pipeline:
+  name: pipe
+  identifier: pipe
+  projectIdentifier: newproj
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: wait
+        identifier: wait
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Wait
+                  name: Wait_1
+                  identifier: Wait_1
+                  spec:
+                    duration: 10s
+        tags: {}
+  notificationRules:
+    - name: wait complete
+      identifier: wait_complete
+      pipelineEvents:
+        - type: AllEvents
+      notificationMethod:
+        type: Email
+        spec:
+          userGroups: []
+          recipients:
+            - daniel.gonzalez@harness.io
+      enabled: true
